@@ -1,10 +1,21 @@
 import { Button } from '@/components/ui/button';
 import { Loading } from '@/components/ui/loading';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+
+  const router = useRouter();
+
+  const handleChatRedirect = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      router.push('/chat');
+    }, 1000);
+  };
 
   return (
     <>
@@ -16,7 +27,7 @@ export default function Home() {
       <main className="h-screen w-screen bg-black">
         <div className="place-content-center h-screen w-screen grid">
           <Button
-            onClick={() => setLoading(!loading)}
+            onClick={handleChatRedirect}
             className="bg-white text-black hover:bg-white duration-150 flex items-center gap-3 transition-all border-none"
           >
             {loading ? <Loading /> : null}
