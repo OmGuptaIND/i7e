@@ -102,7 +102,7 @@ const Content = () => {
 
               <div
                 className={cn(
-                  'rounded-lg px-2 py-2 text-xs text-gray-400 flex items-center gap-3 cursor-pointer hover:bg-custom-hover',
+                  'rounded-lg px-2 py-2 text-xs text-gray-400 flex items-center gap-2 cursor-pointer hover:bg-custom-hover',
                 )}
               >
                 <span>
