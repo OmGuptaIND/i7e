@@ -5,7 +5,7 @@ import type React from 'react';
 import { useState } from 'react';
 
 const ChatPage = () => {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
   const handleCollapse = () => {
     setIsCollapsed((prev) => !prev);
