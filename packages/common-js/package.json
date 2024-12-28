@@ -1,0 +1,56 @@
+{
+  "name": "common-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    "./terror": {
+      "import": "./dist/terror/index.js",
+      "require": "./dist/terror/index.js",
+      "types": "./dist/terror/index.d.ts"
+    },
+    "./EnhancedMap": {
+      "import": "./dist/EnhancedMap/index.js",
+      "require": "./dist/EnhancedMap/index.js",
+      "types": "./dist/EnhancedMap/index.d.ts"
+    },
+    "./EnhancedSet": {
+      "import": "./dist/EnhancedSet/index.js",
+      "require": "./dist/EnhancedSet/index.js",
+      "types": "./dist/EnhancedSet/index.d.ts"
+    },
+    "./EnhancedEventEmitter": {
+      "import": "./dist/EnhancedEventEmitter/index.js",
+      "require": "./dist/EnhancedEventEmitter/index.js",
+      "types": "./dist/EnhancedEventEmitter/index.d.ts"
+    },
+    "./ConcurrentExecutor": {
+      "import": "./dist/ConcurrentExecutor.js",
+      "require": "./dist/ConcurrentExecutor.js",
+      "types": "./dist/ConcurrentExecutor.d.ts"
+    },
+    "./Mutex": {
+      "import": "./dist/Mutex/index.js",
+      "require": "./dist/Mutex/index.js",
+      "types": "./dist/Mutex.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "bun run build --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zod": "^3.23.8",
+    "zod-validation-error": "^3.4.0"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "typescript": "5.6.2"
+  }
+}
