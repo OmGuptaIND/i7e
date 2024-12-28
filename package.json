@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@biomejs/monorepo": "biomejs/biome",
+    "@biomejs/biome": "1.9.3",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"
   },
