@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .user import router as user_router
 from .health import router as health_router
+from .user import router as user_router
 
 app = FastAPI(title="i7E Server", version="1.0.0")
 

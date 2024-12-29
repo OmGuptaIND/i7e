@@ -1,12 +1,14 @@
 import uvicorn
-from server.router import Server
+
+from server.router import app
+
 
 async def main():
     """
     Main Server Loop
     """
     config = uvicorn.Config(
-        app=Server,
+        app=app,
         host="localhost",
         port=8000,
         reload=True

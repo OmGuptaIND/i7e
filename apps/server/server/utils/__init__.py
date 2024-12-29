@@ -1,7 +1,9 @@
-from .app import app
+from .emitter import Emitter
+from .logger import logger
 
 __all__ = [
-   "app"
+    "Emitter",
+    "logger"
 ]
 
 # Cleanup docs of unexported modules

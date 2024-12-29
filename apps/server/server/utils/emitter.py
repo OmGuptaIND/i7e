@@ -1,17 +1,16 @@
 import inspect
-from typing import Callable, Dict, Generic, Optional, Set, TypeVar
+from typing import Callable, Generic, Optional, TypeVar
 
-from .log import logger
+from server.utils import logger
 
 T_contra = TypeVar("T_contra", contravariant=True)
-
 
 class Emitter(Generic[T_contra]):
     def __init__(self) -> None:
         """
         Initialize a new instance of EventEmitter.
         """
-        self._events: Dict[T_contra, Set[Callable]] = dict()
+        self._events: dict[T_contra, set[Callable]] = {}
 
     def emit(self, event: T_contra, *args) -> None:
         """
