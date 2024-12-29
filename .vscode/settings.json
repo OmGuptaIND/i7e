@@ -4,6 +4,7 @@
   "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
+
   "editor.codeActionsOnSave": {
     "source.organizeImports.rome": "explicit"
   },
@@ -27,13 +28,6 @@
     "titleBar.activeForeground": "#020617",
     "titleBar.inactiveBackground": "#f9723cdb",
     "titleBar.inactiveForeground": "#020617"
-  },
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook": "file:///Users/arushkurundodi/Desktop/huddle01/shinigami/ansible/playbook/sushi/deploy.yml"
-  },
-  "sonarlint.connectedMode.project": {
-    "connectionId": "https-sonarqube-huddle01-media",
-    "projectKey": "Huddle01_shinigami_AY2nmUFBqI2Nhzj1MJCX"
   },
   "[go]": {
     "editor.insertSpaces": true,
