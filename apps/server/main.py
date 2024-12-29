@@ -1,14 +1,14 @@
 import uvicorn
 
-from server.router import app
-from server.utils.env import (
+from server.config.env import (
     get_host,
     get_port,
     get_reload,
     get_workers,
     load_environment,
 )
-from server.utils.logger import get_log_level, setup_logging
+from server.router import app
+from server.utils.logger import get_log_level, logger, setup_logging
 
 
 async def main():
@@ -29,6 +29,8 @@ async def main():
         reload=get_reload(),
         log_level=get_log_level(),
     )
+
+    logger.info(f"Starting server on {get_host()}:{get_port()}, reload={get_reload()}, workers={get_workers()}")
 
     server = uvicorn.Server(config)
     await server.serve()

@@ -71,3 +71,17 @@ def get_workers() -> int:
         int: Number of workers.
     """
     return int(os.getenv("WORKERS", 1))
+
+def get_oai_api_key() -> str:
+    """
+    Get the OpenAI API key.
+    
+    Returns:
+        str: OpenAI API key.
+    """
+    oai_key =  os.getenv("OAI_API_KEY")
+
+    if not oai_key:
+        raise ValueError("OpenAI API key not set")
+    
+    return oai_key
