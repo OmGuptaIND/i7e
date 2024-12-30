@@ -1,7 +1,7 @@
-from collections.abc import Iterable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Literal, Optional, Union
 
+from openai.types import ChatModel
 from openai.types.chat import (
     ChatCompletionAssistantMessageParam,
     ChatCompletionDeveloperMessageParam,
@@ -19,45 +19,13 @@ ChatCompletionMessageParam = Union[
     ChatCompletionAssistantMessageParam,
 ]
 
-Models = Literal["gpt-4o", "gpt-4o-mini"]
-
-Role = Literal["user", "system", "developer", "assistant"]
-
-# @dataclass
-# class ChatMessage:
-#     """
-#     Messages exchanged for the Chat API
-#     """
-#     role: Role
-#     """
-#     The role of the messages author
-#     """
-
-#     content: Optional[str] = None
-#     """
-#     The contents of the assistant message. Required unless tool_calls or function_call is specified.
-#     """
-
-#     name: Optional[str] = None
-#     """
-#     An optional name for the participant. Provides the model information to differentiate between participants of the same role. 
-#     """
+Models = Literal["gpt-4o", "gpt-4o-mini", ChatModel]
 
 @dataclass
-class ChatCompletion:
-    user: str
-    """
-    A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
-    """
-
-    model: Models = field(default="gpt-4o-mini")
+class ProviderOptions:
+    model: Models
     """
     ID of the model to use, default is "gpt-4o-mini"
-    """
-
-    messages: Iterable[ChatCompletionMessageParam] = field(default_factory=list)
-    """
-    A list of messages comprising the conversation so far.
     """
 
     store: bool = False

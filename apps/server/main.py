@@ -7,7 +7,7 @@ from server.config.env import (
     get_workers,
     load_environment,
 )
-from server.router import app
+from server.router.app import app
 from server.utils.logger import get_log_level, logger, setup_logging
 
 

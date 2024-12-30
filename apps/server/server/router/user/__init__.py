@@ -1,7 +1,7 @@
-from .app import app
+from .router import router as user_router
 
 __all__ = [
-   "app"
+    "user_router",
 ]
 
 # Cleanup docs of unexported modules
