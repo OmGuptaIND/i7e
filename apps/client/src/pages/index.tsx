@@ -1,20 +1,27 @@
 import { Button } from '@/components/ui/button';
 import { Loading } from '@/components/ui/loading';
+import { useChat } from '@/hooks/useChat';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function Home() {
+  const { createChat } = useChat();
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
-  const handleChatRedirect = () => {
-    setLoading(true);
+  const handleChatRedirect = async () => {
+    try {
+      setLoading(true);
+      const { sessionId } = await createChat();
 
-    setTimeout(() => {
       router.push('/chat');
-    }, 1000);
+    } catch (error) {
+      console.error('Error creating chat:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

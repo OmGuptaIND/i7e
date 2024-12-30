@@ -1,17 +1,14 @@
-from enum import Enum
 from typing import Literal, TypedDict
 
 Models = Literal["gpt-4o", "gpt-4o-mini"]
 VALID_PROVIDERS = Literal["openai", "gemini", "anthropic", "deepseek"]
 Role = Literal["user", "developer", "assistant"]
+ChatMessageResponseType = Literal["content", "error", "done"]
 
-class ChatMessageResponseType(str, Enum):
-    CONTENT = "content"
-    ERROR = "error"
-    DONE = "done"
 
 class ChatResponse(TypedDict):
     """Standardized chat response format"""
+    response_id: str
     type: ChatMessageResponseType
     content: str
 

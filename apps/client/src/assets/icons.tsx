@@ -9,8 +9,8 @@ export const Icons = {
       <path
         d="M 40 30 L 70 30 M 40 50 L 60 50 L 40 75"
         stroke="black"
-        stroke-width="10"
-        stroke-linecap="round"
+        strokeWidth="10"
+        strokeLinecap="round"
         fill="none"
       />
     </svg>
@@ -21,8 +21,8 @@ export const Icons = {
       <path
         d="M 40 35 L 70 35 M 40 55 L 60 55 L 40 80"
         stroke="white"
-        stroke-width="10"
-        stroke-linecap="round"
+        strokeWidth="10"
+        strokeLinecap="round"
         fill="none"
       />
     </svg>
@@ -35,14 +35,14 @@ export const Icons = {
       <path
         d="M 65 30 L 105 30 L 75 70"
         stroke="black"
-        stroke-width="10"
+        strokeWidth="10"
         fill="none"
       />
 
       <path
         d="M 130 30 L 170 30 M 130 50 L 160 50 M 130 70 L 170 70 M 130 30 L 130 70"
         stroke="black"
-        stroke-width="10"
+        strokeWidth="10"
         fill="none"
       />
     </svg>
@@ -55,14 +55,14 @@ export const Icons = {
       <path
         d="M 65 30 L 105 30 L 75 70"
         stroke="white"
-        stroke-width="10"
+        strokeWidth="10"
         fill="none"
       />
 
       <path
         d="M 130 30 L 170 30 M 130 50 L 160 50 M 130 70 L 170 70 M 130 30 L 130 70"
         stroke="white"
-        stroke-width="10"
+        strokeWidth="10"
         fill="none"
       />
     </svg>

@@ -6,9 +6,9 @@ from openai import AsyncOpenAI, AsyncStream
 from server.config.env import get_oai_api_key
 from server.protocol.chatbot.schema import (
     ChatMessage,
-    ChatMessageResponseType,
     ChatResponse,
 )
+from server.utils import generate_random_session_id
 from server.utils.logger import logger
 
 from . import _api
@@ -30,8 +30,6 @@ class ChatBot:
 
         self._options = options or _api.ProviderOptions(model="gpt-4o-mini")
 
-        logger.info(f"ChatBot: Created with options {self._options}")
-
         self._logger = logger.getChild(f"ChatBot-{session_id}")
     
     def reset(self) -> None:
@@ -41,6 +39,8 @@ class ChatBot:
         self._messages = []
 
     async def ask_async(self, message: ChatMessage) -> AsyncGenerator[ChatResponse, None]:
+        response_id = generate_random_session_id()
+        
         try:
             self._messages.append({
                 "role":"user",
@@ -73,15 +73,15 @@ class ChatBot:
             full_response = ""
 
             async for chunk in response:
-
                 if chunk.choices:
                     delta = chunk.choices[0].delta
 
                     if delta.content:
                         full_response += delta.content
                         yield {
+                            "response_id": response_id,
                             "content" : delta.content,
-                            "type": ChatMessageResponseType.CONTENT
+                            "type": "content"
                         }
 
             self._messages.append({
@@ -95,6 +95,7 @@ class ChatBot:
             self._logger.error(f"ChatBot: Error in chat stream: {e}")
 
             yield {
+                "response_id": response_id,
                 "content" : str(e),
-                "type": ChatMessageResponseType.ERROR
+                "type": "error"
             }

@@ -1,3 +1,4 @@
+import json
 from typing import TYPE_CHECKING
 
 from fastapi import APIRouter, HTTPException, status
@@ -58,7 +59,7 @@ async def ask_chat(item: AskRequest):
             }
 
             async for chunk in chat_bot.ask_async(message):
-                yield f"data: {chunk}\n\n"
+                yield f"data: {json.dumps(chunk)}\n\n"
 
             yield "data: [DONE]\n\n"
 

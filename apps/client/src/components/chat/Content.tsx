@@ -2,16 +2,24 @@ import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Send, PlusCircle, Image, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
+import ResponseWrapper from './content/ResponseWrapper';
+import ChatInput from './ChatInput';
+import { useChat } from '@/hooks/useChat';
 
 const Content = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(
+    'Which is the Tallest Building in the World',
+  );
+  const { sendMessage } = useChat();
+
   const textRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (message.trim()) {
       console.info('Sending message:', message);
+      await sendMessage({ content: message, role: 'user' });
+
       setMessage('');
 
       if (textRef.current) {
@@ -57,7 +65,7 @@ const Content = () => {
           className="flex-1 overflow-y-auto p-4 space-y-4"
         >
           <div className="flex flex-col space-y-4">
-            {/* Messages would go here */}
+            <ResponseWrapper />
           </div>
         </section>
 
@@ -65,17 +73,12 @@ const Content = () => {
         <section key="chat-input" className="p-4">
           <div className="max-w-4xl mx-auto bg-neutral-900 rounded-xl p-2 px-4">
             <div className="relative flex ">
-              <div className="flex-1 flex items-start">
-                <Textarea
-                  ref={textRef}
-                  value={message}
-                  onChange={handleInput}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Ask i7E a question..."
-                  className="flex-1 bg-transparent resize-none text-gray-200 placeholder-gray-500 min-h-[20px] py-0 max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent"
-                />
-              </div>
-
+              <ChatInput
+                textRef={textRef}
+                message={message}
+                onChange={handleInput}
+                key="chat-input"
+              />
               <div className="flex">
                 <Button
                   onClick={handleSend}
@@ -85,6 +88,7 @@ const Content = () => {
                     ' bg-orange-600 hover:bg-orange-700 text-white hover:text-white duration-300 transition-all',
                   )}
                   disabled={!message.trim()}
+                  onKeyDown={handleKeyDown}
                 >
                   <Send className="w-5 h-5" />
                 </Button>
