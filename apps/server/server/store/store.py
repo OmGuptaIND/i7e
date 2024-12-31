@@ -1,5 +1,5 @@
 
-from server.protocol.chatbot.provider import ChatProvider
+from server.flows.chat.provider import ChatProvider
 from server.utils.emitter import Emitter
 from server.utils.logger import logger
 
