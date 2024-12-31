@@ -29,7 +29,7 @@ export const useChat = () => {
     {
       mutationFn: async (): Promise<{ sessionId: string }> => {
         const response = await fetch(
-          `${env.NEXT_PUBLIC_SERVER_URL}/api/v1/chat/create`,
+          `${env.NEXT_PUBLIC_SERVER_URL}/api/v1/generate/create`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -67,7 +67,7 @@ export const useChat = () => {
       };
 
       const response = await fetch(
-        `${env.NEXT_PUBLIC_SERVER_URL}/api/v1/chat/ask`,
+        `${env.NEXT_PUBLIC_SERVER_URL}/api/v1/generate/chat`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
