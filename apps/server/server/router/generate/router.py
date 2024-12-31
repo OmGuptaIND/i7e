@@ -5,8 +5,8 @@ from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import StreamingResponse
 
 from server.config.env import is_development
-from server.providers.gemini import GeminiProvider
-from server.providers.openai.chat import OpenAIProvider
+from server.flows.chat.gemini import GeminiProvider
+from server.flows.chat.openai import OpenAIProvider
 from server.store import store
 from server.utils import generate_random_session_id
 from server.utils.logger import logger
@@ -14,7 +14,7 @@ from server.utils.logger import logger
 from .schema import AskRequest, CreateChatRequest, CreateChatResponse
 
 if TYPE_CHECKING:
-    from server.protocol.chatbot.schema import ChatMessage
+    from server.protocol.chat.schema import ChatMessage
 
 router = APIRouter(
     prefix="/generate",
@@ -46,7 +46,7 @@ def on_create_chat(item: CreateChatRequest):
         ) from e
 
 
-@router.post("/ask/")
+@router.post("/chat/")
 async def ask_chat(item: AskRequest):
     chat_bot = store.get_chatbot(item.session_id)
 

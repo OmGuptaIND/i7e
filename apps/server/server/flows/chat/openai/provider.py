@@ -2,9 +2,8 @@ from collections.abc import AsyncGenerator
 from typing import Optional
 
 from openai import AsyncOpenAI, AsyncStream
-
 from server.config.env import get_oai_api_key
-from server.protocol.chatbot.schema import (
+from server.protocol.chat.schema import (
     ChatMessage,
     ChatResponse,
 )
