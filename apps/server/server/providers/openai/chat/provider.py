@@ -14,7 +14,7 @@ from server.utils.logger import logger
 from . import _api
 
 
-class ChatBot:
+class OpenAIProvider:
     """
     ChatBot provider for OpenAI
     """

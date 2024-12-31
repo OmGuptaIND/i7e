@@ -85,3 +85,17 @@ def get_oai_api_key() -> str:
         raise ValueError("OpenAI API key not set")
     
     return oai_key
+
+def get_google_api_key():
+    """
+    Get the Google API key.
+    
+    Returns:
+        str: Google API key.
+    """
+    google_key = os.getenv("GOOGLE_API_KEY")
+
+    if not google_key:
+        raise ValueError("Google API key not set")
+    
+    return google_key

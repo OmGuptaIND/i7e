@@ -1,3 +1,5 @@
+import asyncio
+
 import uvicorn
 
 from server.config.env import (
@@ -26,7 +28,7 @@ async def main():
         host=get_host(),
         port=get_port(),
         workers=get_workers(),
-        reload=get_reload(),
+        reload=True,
         log_level=get_log_level(),
     )
 
@@ -37,5 +39,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    import asyncio
     asyncio.run(main())

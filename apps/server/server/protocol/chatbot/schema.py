@@ -2,7 +2,7 @@ from typing import Literal, TypedDict
 
 Models = Literal["gpt-4o", "gpt-4o-mini"]
 VALID_PROVIDERS = Literal["openai", "gemini", "anthropic", "deepseek"]
-Role = Literal["user", "developer", "assistant"]
+Role = Literal["user", "developer", "assistant", "model"]
 ChatMessageResponseType = Literal["content", "error", "done"]
 
 

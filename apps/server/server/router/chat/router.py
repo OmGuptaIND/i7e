@@ -4,7 +4,8 @@ from typing import TYPE_CHECKING
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import StreamingResponse
 
-from server.providers.openai.chat import ChatBot as OpenAIChatBot
+from server.providers.gemini.chat import GeminiProvider
+from server.providers.openai.chat import OpenAIProvider
 from server.store import store
 from server.utils import generate_random_session_id
 from server.utils.logger import logger
@@ -28,7 +29,11 @@ def on_create_chat(item: CreateChatRequest):
     try:
         session_id = generate_random_session_id()
 
-        store.add_chatbot(session_id, OpenAIChatBot(session_id))
+        if item.provider == "openai":
+            store.add_chatbot(session_id, OpenAIProvider(session_id))
+
+        elif item.provider == "gemini":
+            store.add_chatbot(session_id, GeminiProvider(session_id))
             
         return {"session_id": session_id}
     

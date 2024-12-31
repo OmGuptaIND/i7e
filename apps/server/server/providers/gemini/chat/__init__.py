@@ -1,9 +1,7 @@
-from ._api import ChatCompletionUserMessageParam
-from .provider import OpenAIProvider
+from .provider import GeminiProvider
 
 __all__ = [
-    "ChatCompletionUserMessageParam",
-    "OpenAIProvider"
+    "GeminiProvider"
 ]
 
 # Cleanup docs of unexported modules
