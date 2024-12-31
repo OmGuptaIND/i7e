@@ -27,6 +27,15 @@ def load_environment():
     load_dotenv(env_path / ".env", override=True)
 
 
+def is_development() -> bool:
+    """
+    Check if the environment is development.
+    
+    Returns:
+        bool: True if development, False otherwise.
+    """
+    return os.getenv("ENV", "development") == "development"
+
 def get_host() -> str:
     """
     Get the host to bind to.

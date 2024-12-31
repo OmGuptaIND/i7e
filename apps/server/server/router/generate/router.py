@@ -4,7 +4,8 @@ from typing import TYPE_CHECKING
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import StreamingResponse
 
-from server.providers.gemini.chat import GeminiProvider
+from server.config.env import is_development
+from server.providers.gemini import GeminiProvider
 from server.providers.openai.chat import OpenAIProvider
 from server.store import store
 from server.utils import generate_random_session_id
@@ -16,7 +17,7 @@ if TYPE_CHECKING:
     from server.protocol.chatbot.schema import ChatMessage
 
 router = APIRouter(
-    prefix="/chat",
+    prefix="/generate",
     tags=["chat"],
     responses={404: {"description": "Method Not found"}},
 )
@@ -27,7 +28,7 @@ router = APIRouter(
 )
 def on_create_chat(item: CreateChatRequest):
     try:
-        session_id = generate_random_session_id()
+        session_id = "omg" if is_development else generate_random_session_id()
 
         if item.provider == "openai":
             store.add_chatbot(session_id, OpenAIProvider(session_id))
