@@ -14,7 +14,7 @@ from server.utils.logger import logger
 from .schema import AskRequest, CreateChatRequest, CreateChatResponse
 
 if TYPE_CHECKING:
-    from server.protocol.chat.schema import ChatMessage
+    from server.flows.chat.schema import ChatMessage
 
 router = APIRouter(
     prefix="/generate",

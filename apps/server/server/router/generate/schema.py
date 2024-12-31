@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from server.protocol.chatbot.schema import VALID_PROVIDERS, Role
+from server.flows.chat.schema import VALID_PROVIDERS, Role
 
 
 class CreateChatRequest(BaseModel):

@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Optional
 import google.generativeai as genai
 
 from server.config.env import get_google_api_key
-from server.protocol.chatbot.schema import ChatMessage, ChatResponse
+from server.flows.chat.schema import ChatMessage, ChatResponse
 from server.utils import generate_random_session_id
 from server.utils.logger import logger
 
